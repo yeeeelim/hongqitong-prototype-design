@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红骑通原型设计</title>
+    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <script src="js/swiper-bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #E53935;
+            --secondary-color: #1976D2;
+            --text-color: #333333;
+            --bg-color: #FFFFFF;
+            --card-bg: #F5F5F5;
+            --border-color: #E0E0E0;
+        }
+
+        [data-theme="dark"] {
+            --text-color: #FFFFFF;
+            --bg-color: #121212;
+            --card-bg: #1E1E1E;
+            --border-color: #333333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--border-color);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .prototype-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .prototype-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ios-device {
+            position: relative;
+            background-color: var(--bg-color);
+            border-radius: 2rem;
+            padding: 1rem;
+            margin: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ios-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 1.5rem;
+            background-color: var(--card-bg);
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+
+        .ios-home-indicator {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 0.25rem;
+            background-color: var(--border-color);
+            border-radius: 1rem;
+        }
+
+        .prototype-card:hover .ios-device {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .prototype-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-stack {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition-property: opacity, transform;
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:inline"></i>
+    </button>
+
+    <header class="header">
+        <h1 class="text-4xl font-bold mb-4">红骑通原型设计</h1>
+        <p class="text-xl">为外卖骑手提供全方位的权益保障和职业发展支持</p>
+    </header>
+
+    <main class="main-content">
+        <section class="hero" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">项目说明</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fab fa-html5 text-orange-500"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt text-blue-500"></i>
+                    <span>Tailwind CSS</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js text-yellow-500"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-apple text-gray-500"></i>
+                    <span>iOS Design</span>
+                </div>
+            </div>
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-2">设计规范</h3>
+                <p class="text-lg">遵循 Apple Human Interface Guidelines</p>
+                <p class="text-lg">主色调：品牌红色 (#E53935)</p>
+                <p class="text-lg">辅助色：蓝色 (#1976D2)</p>
+            </div>
+        </section>
+
+        <section class="prototype-grid">
+            <div class="prototype-card" data-aos="fade-up">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="login.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">登录注册</h3>
+                    <p>快速、安全的账号验证系统</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="home.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">首页</h3>
+                    <p>个性化推荐和快捷功能入口</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="policy.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">政策与法律支持</h3>
+                    <p>权益保障和法律咨询服务</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="insurance.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">保险服务</h3>
+                    <p>定制化保险方案和理赔服务</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="academy.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">成长学院</h3>
+                    <p>职业技能培训和发展规划</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="points.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">积分激励</h3>
+                    <p>任务奖励和积分兑换系统</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="express.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">速通服务</h3>
+                    <p>快速响应的便民服务</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="community.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">活力社区</h3>
+                    <p>骑手交流和互助平台</p>
+                </div>
+            </div>
+
+            <div class="prototype-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="ios-device">
+                    <div class="ios-notch"></div>
+                    <iframe src="profile.html" frameborder="0" width="100%" height="600"></iframe>
+                    <div class="ios-home-indicator"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">个人中心</h3>
+                    <p>账号管理和个性化设置</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 红骑通. All rights reserved.</p>
+    </footer>
+
+    <script src="js/aos.js"></script>
+    <script>
+        // 初始化 AOS 动画库
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // 主题切换功能
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        }
+
+        // 监听系统主题变化
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        // 延迟加载 iframe
+        window.addEventListener('load', function() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                iframe.setAttribute('loading', 'lazy');
+            });
+        });
+    </script>
+</body>
+</html>
