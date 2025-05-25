@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骑手社区 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .community-header {
+            background: linear-gradient(135deg, #673AB7 0%, #512DA8 100%);
+            padding: 1rem;
+            color: white;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 1rem;
+            margin: -1rem 1rem 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .post-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .post-tab {
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-tab.active {
+            background: #673AB7;
+            color: white;
+        }
+
+        .post-list {
+            padding: 1rem;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .post-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 0 1rem 1rem;
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #666;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #673AB7;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .profile-card,
+            .post-tab,
+            .post-card {
+                background: #1E1E1E;
+            }
+
+            .post-actions {
+                border-color: #2C2C2C;
+            }
+
+            .post-action {
+                color: #999;
+            }
+
+            .post-tab.active {
+                background: #673AB7;
+            }
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <header class="community-header">
+        <h1 class="text-2xl font-bold mb-4">骑手社区</h1>
+        <div class="profile-card">
+            <img src="images/avatar.jpg" alt="头像" class="profile-avatar">
+            <div class="flex-1">
+                <h2 class="font-bold">张小明</h2>
+                <p class="text-sm opacity-80">骑手 · 3年经验</p>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="font-bold">128</div>
+                        <div class="text-xs opacity-80">关注</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="font-bold">256</div>
+                        <div class="text-xs opacity-80">粉丝</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="font-bold">64</div>
+                        <div class="text-xs opacity-80">动态</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="post-tabs">
+        <button class="post-tab active">推荐</button>
+        <button class="post-tab">关注</button>
+        <button class="post-tab">热门</button>
+        <button class="post-tab">附近</button>
+        <button class="post-tab">话题</button>
+    </div>
+
+    <div class="post-list">
+        <div class="post-card">
+            <div class="post-header">
+                <img src="images/user-1.jpg" alt="用户头像" class="post-avatar">
+                <div>
+                    <div class="font-bold">李师傅</div>
+                    <div class="text-xs opacity-80">2小时前</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p class="mb-2">分享一下今天遇到的暖心故事，送单途中遇到一位老奶奶摔倒了，和路人一起帮忙送她去了医院，虽然耽误了一点时间，但能帮到人心里很开心！ 🙏</p>
+                <img src="images/post-1.jpg" alt="帖子图片" class="post-image rounded-lg mb-2">
+                <div class="post-actions">
+                    <button class="post-action">
+                        <i class="far fa-heart"></i>
+                        <span>286</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>48</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-share-square"></i>
+                        <span>12</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-card">
+            <div class="post-header">
+                <img src="images/user-2.jpg" alt="用户头像" class="post-avatar">
+                <div>
+                    <div class="font-bold">王大哥</div>
+                    <div class="text-xs opacity-80">4小时前</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p class="mb-2">今天天气不错，分享一张路上拍的照片，祝大家周末愉快！ 🌞</p>
+                <img src="images/post-2.jpg" alt="帖子图片" class="post-image rounded-lg mb-2">
+                <div class="post-actions">
+                    <button class="post-action">
+                        <i class="far fa-heart"></i>
+                        <span>156</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>32</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-share-square"></i>
+                        <span>8</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-button">
+        <i class="fas fa-plus fa-lg"></i>
+    </button>
+</body>
+</html>

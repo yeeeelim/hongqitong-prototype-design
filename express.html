@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快递服务 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .express-header {
+            background: linear-gradient(135deg, #3F51B5 0%, #303F9F 100%);
+            padding: 1rem;
+            color: white;
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 1rem;
+            margin: -1rem 1rem 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 0.5rem;
+            background: #E8EAF6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3F51B5;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .service-card:active {
+            transform: scale(0.95);
+        }
+
+        .service-icon {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 0.5rem;
+            background: #E8EAF6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3F51B5;
+        }
+
+        .order-list {
+            padding: 1rem;
+        }
+
+        .order-item {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-status {
+            padding: 0.25rem 0.5rem;
+            background: #E8EAF6;
+            color: #3F51B5;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .order-info {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-icon {
+            width: 2rem;
+            height: 2rem;
+            background: #E8EAF6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3F51B5;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #3F51B5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .order-card,
+            .service-card,
+            .order-item {
+                background: #1E1E1E;
+            }
+
+            .stat-icon,
+            .service-icon,
+            .order-icon {
+                background: #2C2C2C;
+            }
+
+            .order-status {
+                background: #2C2C2C;
+            }
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <header class="express-header">
+        <h1 class="text-2xl font-bold mb-4">快递服务</h1>
+        <div class="order-card">
+            <div class="order-stats">
+                <div>
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="font-bold">12</div>
+                    <div class="text-sm opacity-80">待取件</div>
+                </div>
+                <div>
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="font-bold">8</div>
+                    <div class="text-sm opacity-80">配送中</div>
+                </div>
+                <div>
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="font-bold">128</div>
+                    <div class="text-sm opacity-80">已完成</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="service-grid">
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-qrcode fa-lg"></i>
+            </div>
+            <h3 class="font-bold">扫码取件</h3>
+            <p class="text-sm opacity-80">快速扫码取件</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-map-marked-alt fa-lg"></i>
+            </div>
+            <h3 class="font-bold">路线规划</h3>
+            <p class="text-sm opacity-80">智能规划路线</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-history fa-lg"></i>
+            </div>
+            <h3 class="font-bold">配送记录</h3>
+            <p class="text-sm opacity-80">查看历史订单</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-chart-line fa-lg"></i>
+            </div>
+            <h3 class="font-bold">数据统计</h3>
+            <p class="text-sm opacity-80">查看配送数据</p>
+        </div>
+    </div>
+
+    <h2 class="text-xl font-bold m-4">待取件订单</h2>
+    <div class="order-list">
+        <div class="order-item">
+            <div class="order-header">
+                <span class="font-bold">#20240115001</span>
+                <span class="order-status">待取件</span>
+            </div>
+            <div class="order-info">
+                <div class="order-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="flex-1">
+                    <div>顺丰快递</div>
+                    <div class="text-sm opacity-80">菜鸟驿站 - 东方广场店</div>
+                </div>
+            </div>
+            <div class="text-sm opacity-80">取件码：SF1234567</div>
+        </div>
+
+        <div class="order-item">
+            <div class="order-header">
+                <span class="font-bold">#20240115002</span>
+                <span class="order-status">待取件</span>
+            </div>
+            <div class="order-info">
+                <div class="order-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="flex-1">
+                    <div>京东快递</div>
+                    <div class="text-sm opacity-80">京东派送点 - 西湖店</div>
+                </div>
+            </div>
+            <div class="text-sm opacity-80">取件码：JD9876543</div>
+        </div>
+    </div>
+
+    <button class="floating-button">
+        <i class="fas fa-plus fa-lg"></i>
+    </button>
+</body>
+</html>
