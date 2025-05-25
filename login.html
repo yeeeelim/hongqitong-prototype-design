@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 红骑通</title>
+    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .login-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #E0E0E0;
+        }
+
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .login-tab.active {
+            color: #E53935;
+            border-bottom: 2px solid #E53935;
+            margin-bottom: -2px;
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .login-input:focus {
+            border-color: #E53935;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+        }
+
+        .verify-button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.5rem 1rem;
+            background: #E53935;
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .verify-button:hover {
+            background: #D32F2F;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #E53935;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-button:hover {
+            background: #D32F2F;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .login-option {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .login-option:hover {
+            color: #E53935;
+        }
+
+        .third-party-login {
+            margin-top: 2rem;
+        }
+
+        .divider {
+            position: relative;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .divider-line {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: #E0E0E0;
+        }
+
+        .divider-text {
+            position: relative;
+            display: inline-block;
+            padding: 0 1rem;
+            background: white;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-button {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #F5F5F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .social-button:hover {
+            background: #E0E0E0;
+            color: #333;
+        }
+
+        .agreement {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .agreement a {
+            color: #E53935;
+            text-decoration: none;
+        }
+
+        .agreement a:hover {
+            text-decoration: underline;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .login-container {
+                background: rgba(30, 30, 30, 0.9);
+            }
+
+            .login-tab {
+                color: #999;
+            }
+
+            .login-input {
+                background: #333;
+                border-color: #444;
+                color: white;
+            }
+
+            .login-input:focus {
+                border-color: #E53935;
+                box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.4);
+            }
+
+            .input-icon {
+                color: #999;
+            }
+
+            .login-option {
+                color: #999;
+            }
+
+            .divider-text {
+                background: #1E1E1E;
+                color: #999;
+            }
+
+            .social-button {
+                background: #333;
+                color: #999;
+            }
+
+            .social-button:hover {
+                background: #444;
+                color: white;
+            }
+
+            .agreement {
+                color: #999;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="login-bg"></div>
+    <div class="login-overlay"></div>
+
+    <div class="login-container">
+        <div class="login-logo">
+            <img src="images/login-bg.jpg" alt="红骑通" class="mx-auto h-24">
+        </div>
+
+        <h2 class="text-2xl font-bold text-center mb-8">欢迎使用红骑通</h2>
+
+        <div class="login-tabs">
+            <div class="login-tab active" onclick="switchTab('phone')">手机号登录</div>
+            <div class="login-tab" onclick="switchTab('password')">密码登录</div>
+        </div>
+
+        <form class="login-form active" id="phone-login">
+            <div class="input-group">
+                <i class="fas fa-mobile-alt input-icon"></i>
+                <input type="tel" class="login-input" placeholder="请输入手机号" maxlength="11">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-shield-alt input-icon"></i>
+                <input type="text" class="login-input" placeholder="请输入验证码" maxlength="6">
+                <button type="button" class="verify-button">获取验证码</button>
+            </div>
+            <button type="submit" class="login-button">登录</button>
+        </form>
+
+        <form class="login-form" id="password-login">
+            <div class="input-group">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" class="login-input" placeholder="请输入账号">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" class="login-input" placeholder="请输入密码">
+            </div>
+            <div class="login-options">
+                <label class="login-option">
+                    <input type="checkbox" class="mr-1"> 记住密码
+                </label>
+                <span class="login-option">忘记密码？</span>
+            </div>
+            <button type="submit" class="login-button">登录</button>
+        </form>
+
+        <div class="third-party-login">
+            <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-text">其他登录方式</span>
+            </div>
+            <div class="social-buttons">
+                <div class="social-button">
+                    <i class="fab fa-weixin"></i>
+                </div>
+                <div class="social-button">
+                    <i class="fab fa-qq"></i>
+                </div>
+                <div class="social-button">
+                    <i class="fab fa-alipay"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="agreement">
+            登录即表示同意
+            <a href="#">《用户协议》</a>
+            和
+            <a href="#">《隐私政策》</a>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.login-form').forEach(f => f.classList.remove('active'));
+
+            if (tab === 'phone') {
+                document.querySelector('.login-tab:first-child').classList.add('active');
+                document.getElementById('phone-login').classList.add('active');
+            } else {
+                document.querySelector('.login-tab:last-child').classList.add('active');
+                document.getElementById('password-login').classList.add('active');
+            }
+        }
+
+        // 防止表单提交刷新页面
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // 这里添加登录逻辑
+            });
+        });
+
+        // 验证码按钮倒计时
+        const verifyButton = document.querySelector('.verify-button');
+        verifyButton.addEventListener('click', () => {
+            let countdown = 60;
+            verifyButton.disabled = true;
+            verifyButton.style.background = '#999';
+            const timer = setInterval(() => {
+                verifyButton.textContent = `${countdown}秒后重试`;
+                countdown--;
+                if (countdown < 0) {
+                    clearInterval(timer);
+                    verifyButton.disabled = false;
+                    verifyButton.textContent = '获取验证码';
+                    verifyButton.style.background = '#E53935';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

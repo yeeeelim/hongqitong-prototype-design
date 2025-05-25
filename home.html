@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .home-header {
+            background: linear-gradient(135deg, #E53935 0%, #D32F2F 100%);
+            padding: 1rem;
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E53935;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .action-item:active {
+            transform: scale(0.95);
+        }
+
+        .action-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #FEF2F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E53935;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 1rem;
+        }
+
+        .news-list {
+            padding: 0 1rem;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .news-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            color: #666;
+            font-size: 0.75rem;
+        }
+
+        .nav-item.active {
+            color: #E53935;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .action-item,
+            .news-item {
+                background: #1E1E1E;
+            }
+
+            .action-icon {
+                background: #2C2C2C;
+            }
+
+            .news-meta {
+                color: #999;
+            }
+
+            .bottom-nav {
+                background: #1E1E1E;
+                border-top-color: #333;
+            }
+
+            .nav-item {
+                color: #999;
+            }
+
+            .nav-item.active {
+                color: #E53935;
+            }
+        }
+    </style>
+</head>
+<body class="pb-16">
+    <header class="home-header">
+        <div class="user-info">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h2 class="text-lg font-bold">张师傅</h2>
+                <p class="text-sm opacity-80">优秀骑手 · 3年经验</p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="text-2xl font-bold">98</div>
+                <div class="text-sm opacity-80">今日订单</div>
+            </div>
+            <div class="stat-item">
+                <div class="text-2xl font-bold">4.9</div>
+                <div class="text-sm opacity-80">平均评分</div>
+            </div>
+            <div class="stat-item">
+                <div class="text-2xl font-bold">12k</div>
+                <div class="text-sm opacity-80">总里程</div>
+            </div>
+            <div class="stat-item">
+                <div class="text-2xl font-bold">8.5k</div>
+                <div class="text-sm opacity-80">总收入</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="quick-actions">
+        <div class="action-item">
+            <div class="action-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <span>保险服务</span>
+        </div>
+        <div class="action-item">
+            <div class="action-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <span>成长学院</span>
+        </div>
+        <div class="action-item">
+            <div class="action-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <span>积分商城</span>
+        </div>
+        <div class="action-item">
+            <div class="action-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <span>骑手社区</span>
+        </div>
+    </section>
+
+    <h3 class="section-title">最新资讯</h3>
+    <div class="news-list">
+        <div class="news-item">
+            <img src="https://picsum.photos/100" alt="新闻图片" class="news-image">
+            <div class="news-content">
+                <div class="news-title">新的交通法规解读：骑手必读</div>
+                <div class="news-meta">
+                    <span>5分钟前</span>
+                    <span>阅读 1.2k</span>
+                </div>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://picsum.photos/100" alt="新闻图片" class="news-image">
+            <div class="news-content">
+                <div class="news-title">如何提高配送效率：经验分享</div>
+                <div class="news-meta">
+                    <span>2小时前</span>
+                    <span>阅读 3.5k</span>
+                </div>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://picsum.photos/100" alt="新闻图片" class="news-image">
+            <div class="news-content">
+                <div class="news-title">天气预警：注意防暑降温</div>
+                <div class="news-meta">
+                    <span>4小时前</span>
+                    <span>阅读 2.8k</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>消息</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </nav>
+</body>
+</html>
