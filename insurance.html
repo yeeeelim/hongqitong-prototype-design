@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保险服务 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .insurance-header {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            padding: 1rem;
+            color: white;
+        }
+
+        .insurance-card {
+            background: white;
+            border-radius: 1rem;
+            margin: -1rem 1rem 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .insurance-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .insurance-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #E3F2FD;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1976D2;
+        }
+
+        .progress-bar {
+            height: 0.5rem;
+            background: #E3F2FD;
+            border-radius: 0.25rem;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #2196F3;
+            width: 75%;
+        }
+
+        .insurance-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .insurance-type {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .insurance-type:active {
+            transform: scale(0.95);
+        }
+
+        .type-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 0.5rem;
+            background: #E3F2FD;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1976D2;
+        }
+
+        .claim-steps {
+            padding: 1rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 2rem;
+            height: 2rem;
+            background: #2196F3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #2196F3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .insurance-card,
+            .insurance-type,
+            .step-item {
+                background: #1E1E1E;
+            }
+
+            .insurance-icon,
+            .type-icon {
+                background: #2C2C2C;
+            }
+
+            .progress-bar {
+                background: #2C2C2C;
+            }
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <header class="insurance-header">
+        <h1 class="text-2xl font-bold mb-4">保险服务</h1>
+        <div class="insurance-card">
+            <div class="insurance-info">
+                <div class="insurance-icon">
+                    <i class="fas fa-shield-alt fa-lg"></i>
+                </div>
+                <div>
+                    <h2 class="font-bold">综合意外保障</h2>
+                    <p class="text-sm opacity-80">保障期限：2024.01.01 - 2024.12.31</p>
+                </div>
+            </div>
+            <div>
+                <div class="flex justify-between text-sm">
+                    <span>保障进度</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="insurance-grid">
+        <div class="insurance-type">
+            <div class="type-icon">
+                <i class="fas fa-ambulance"></i>
+            </div>
+            <h3 class="font-bold">意外医疗</h3>
+            <p class="text-sm opacity-80">最高10万元</p>
+        </div>
+        <div class="insurance-type">
+            <div class="type-icon">
+                <i class="fas fa-procedures"></i>
+            </div>
+            <h3 class="font-bold">住院津贴</h3>
+            <p class="text-sm opacity-80">每天200元</p>
+        </div>
+        <div class="insurance-type">
+            <div class="type-icon">
+                <i class="fas fa-car-crash"></i>
+            </div>
+            <h3 class="font-bold">第三方责任</h3>
+            <p class="text-sm opacity-80">最高20万元</p>
+        </div>
+        <div class="insurance-type">
+            <div class="type-icon">
+                <i class="fas fa-user-injured"></i>
+            </div>
+            <h3 class="font-bold">伤残赔付</h3>
+            <p class="text-sm opacity-80">最高30万元</p>
+        </div>
+    </div>
+
+    <h2 class="text-xl font-bold m-4">理赔流程</h2>
+    <div class="claim-steps">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div>
+                <h3 class="font-bold">报案</h3>
+                <p class="text-sm opacity-80">事故发生后24小时内联系客服报案</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div>
+                <h3 class="font-bold">材料准备</h3>
+                <p class="text-sm opacity-80">收集必要的证明材料和单据</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div>
+                <h3 class="font-bold">提交申请</h3>
+                <p class="text-sm opacity-80">在线提交理赔申请和材料</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div>
+                <h3 class="font-bold">赔付到账</h3>
+                <p class="text-sm opacity-80">审核通过后3个工作日内赔付</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-button">
+        <i class="fas fa-headset fa-lg"></i>
+    </button>
+</body>
+</html>

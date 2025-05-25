@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政策与法律支持 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .policy-header {
+            background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .search-bar {
+            display: flex;
+            margin: 1rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 0.5rem;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 0.5rem 1rem;
+            background: #1976D2;
+            color: white;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .category-item {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .category-item:active {
+            transform: scale(0.95);
+        }
+
+        .category-icon {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 0.5rem;
+            background: #E3F2FD;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1976D2;
+        }
+
+        .article-list {
+            padding: 1rem;
+        }
+
+        .article-item {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .article-tag {
+            padding: 0.25rem 0.5rem;
+            background: #E3F2FD;
+            color: #1976D2;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #1976D2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .search-bar,
+            .category-item,
+            .article-item {
+                background: #1E1E1E;
+            }
+
+            .search-input {
+                background: #1E1E1E;
+                color: white;
+            }
+
+            .category-icon {
+                background: #2C2C2C;
+            }
+
+            .article-meta {
+                color: #999;
+            }
+
+            .article-tag {
+                background: #2C2C2C;
+                color: #90CAF9;
+            }
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <header class="policy-header">
+        <h1 class="text-2xl font-bold mb-2">政策与法律支持</h1>
+        <p class="opacity-80">为骑手提供全方位的权益保障</p>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="搜索政策法规、案例解析等">
+        <button class="search-button">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <div class="category-grid">
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h3 class="font-bold">政策法规</h3>
+            <p class="text-sm opacity-80">最新政策解读</p>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-gavel"></i>
+            </div>
+            <h3 class="font-bold">案例解析</h3>
+            <p class="text-sm opacity-80">真实案例分享</p>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <h3 class="font-bold">权益保障</h3>
+            <p class="text-sm opacity-80">维权指南</p>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <h3 class="font-bold">在线咨询</h3>
+            <p class="text-sm opacity-80">专业律师解答</p>
+        </div>
+    </div>
+
+    <div class="article-list">
+        <div class="article-item">
+            <h3 class="article-title">《外卖骑手劳动权益保护条例》解读</h3>
+            <div class="article-meta">
+                <span>发布时间：2024-01-15</span>
+                <span>阅读 2.3k</span>
+            </div>
+            <div class="article-tags">
+                <span class="article-tag">最新政策</span>
+                <span class="article-tag">权益保护</span>
+            </div>
+        </div>
+
+        <div class="article-item">
+            <h3 class="article-title">交通事故处理流程完整指南</h3>
+            <div class="article-meta">
+                <span>发布时间：2024-01-14</span>
+                <span>阅读 1.8k</span>
+            </div>
+            <div class="article-tags">
+                <span class="article-tag">实用指南</span>
+                <span class="article-tag">案例解析</span>
+            </div>
+        </div>
+
+        <div class="article-item">
+            <h3 class="article-title">送餐延误纠纷：如何合理处理？</h3>
+            <div class="article-meta">
+                <span>发布时间：2024-01-13</span>
+                <span>阅读 1.5k</span>
+            </div>
+            <div class="article-tags">
+                <span class="article-tag">纠纷处理</span>
+                <span class="article-tag">经验分享</span>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-button">
+        <i class="fas fa-headset fa-lg"></i>
+    </button>
+</body>
+</html>
