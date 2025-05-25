@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>积分商城 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .points-header {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            padding: 1rem;
+            color: white;
+        }
+
+        .points-card {
+            background: white;
+            border-radius: 1rem;
+            margin: -1rem 1rem 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .points-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .points-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #FFF3E0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FF9800;
+        }
+
+        .points-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .points-action {
+            flex: 1;
+            padding: 0.5rem;
+            text-align: center;
+            background: #FFF3E0;
+            border-radius: 0.5rem;
+            color: #FF9800;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .category-tab {
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-tab.active {
+            background: #FF9800;
+            color: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 0.5rem;
+        }
+
+        .product-points {
+            color: #FF9800;
+            font-weight: bold;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #FF9800;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .points-card,
+            .category-tab,
+            .product-card {
+                background: #1E1E1E;
+            }
+
+            .points-icon {
+                background: #2C2C2C;
+            }
+
+            .points-action {
+                background: #2C2C2C;
+            }
+
+            .category-tab.active {
+                background: #FF9800;
+            }
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <header class="points-header">
+        <h1 class="text-2xl font-bold mb-4">积分商城</h1>
+        <div class="points-card">
+            <div class="points-info">
+                <div class="points-icon">
+                    <i class="fas fa-coins fa-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold">3,280</h2>
+                    <p class="text-sm opacity-80">当前可用积分</p>
+                </div>
+            </div>
+            <div class="points-actions">
+                <button class="points-action">
+                    <i class="fas fa-exchange-alt mb-1"></i>
+                    <div class="text-sm">兑换记录</div>
+                </button>
+                <button class="points-action">
+                    <i class="fas fa-history mb-1"></i>
+                    <div class="text-sm">积分明细</div>
+                </button>
+                <button class="points-action">
+                    <i class="fas fa-gift mb-1"></i>
+                    <div class="text-sm">签到领积分</div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="category-tabs">
+        <button class="category-tab active">全部商品</button>
+        <button class="category-tab">热门兑换</button>
+        <button class="category-tab">生活用品</button>
+        <button class="category-tab">数码配件</button>
+        <button class="category-tab">骑行装备</button>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/product-1.jpg" alt="商品图片" class="product-image">
+            <div class="product-info">
+                <h3 class="font-bold">防水骑行手套</h3>
+                <p class="text-sm opacity-80 mb-1">专业防滑设计</p>
+                <div class="product-points">
+                    <i class="fas fa-coins mr-1"></i>
+                    <span>1,280积分</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/product-2.jpg" alt="商品图片" class="product-image">
+            <div class="product-info">
+                <h3 class="font-bold">便携充电宝</h3>
+                <p class="text-sm opacity-80 mb-1">10000mAh大容量</p>
+                <div class="product-points">
+                    <i class="fas fa-coins mr-1"></i>
+                    <span>2,580积分</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/product-3.jpg" alt="商品图片" class="product-image">
+            <div class="product-info">
+                <h3 class="font-bold">防雨外套</h3>
+                <p class="text-sm opacity-80 mb-1">轻薄防水设计</p>
+                <div class="product-points">
+                    <i class="fas fa-coins mr-1"></i>
+                    <span>3,680积分</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/product-4.jpg" alt="商品图片" class="product-image">
+            <div class="product-info">
+                <h3 class="font-bold">保温水杯</h3>
+                <p class="text-sm opacity-80 mb-1">24小时保温</p>
+                <div class="product-points">
+                    <i class="fas fa-coins mr-1"></i>
+                    <span>1,980积分</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-button">
+        <i class="fas fa-shopping-cart fa-lg"></i>
+    </button>
+</body>
+</html>

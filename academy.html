@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骑手学院 - 红骑通</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .academy-header {
+            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+            padding: 1rem;
+            color: white;
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: 1rem;
+            margin: -1rem 1rem 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stats-item {
+            padding: 0.5rem;
+        }
+
+        .stats-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 0.5rem;
+            background: #E8F5E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4CAF50;
+        }
+
+        .course-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .course-tab {
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-tab.active {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .course-list {
+            padding: 1rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .course-info {
+            padding: 1rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .course-progress {
+            height: 0.25rem;
+            background: #E8F5E9;
+            border-radius: 0.125rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4CAF50;
+            width: var(--progress, 0%);
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: white;
+            }
+
+            .stats-card,
+            .course-tab,
+            .course-card {
+                background: #1E1E1E;
+            }
+
+            .stats-icon {
+                background: #2C2C2C;
+            }
+
+            .course-tab.active {
+                background: #4CAF50;
+            }
+
+            .course-meta {
+                color: #999;
+            }
+
+            .course-progress {
+                background: #2C2C2C;
+            }
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <header class="academy-header">
+        <h1 class="text-2xl font-bold mb-4">骑手学院</h1>
+        <div class="stats-card">
+            <div class="stats-grid">
+                <div class="stats-item">
+                    <div class="stats-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="font-bold">12</div>
+                    <div class="text-sm opacity-80">在学课程</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="font-bold">8</div>
+                    <div class="text-sm opacity-80">已获证书</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="font-bold">36h</div>
+                    <div class="text-sm opacity-80">学习时长</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="course-tabs">
+        <button class="course-tab active">推荐课程</button>
+        <button class="course-tab">新手入门</button>
+        <button class="course-tab">安全驾驶</button>
+        <button class="course-tab">服务技能</button>
+        <button class="course-tab">进阶提升</button>
+    </div>
+
+    <div class="course-list">
+        <div class="course-card">
+            <img src="images/course-1.jpg" alt="课程封面" class="course-image">
+            <div class="course-info">
+                <h3 class="font-bold">新手骑手入门指南</h3>
+                <p class="text-sm opacity-80 mt-1">从零开始，掌握骑手必备技能</p>
+                <div class="course-meta">
+                    <span>进度：75%</span>
+                    <span>时长：2小时</span>
+                </div>
+                <div class="course-progress mt-2">
+                    <div class="progress-fill" style="--progress: 75%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="images/course-2.jpg" alt="课程封面" class="course-image">
+            <div class="course-info">
+                <h3 class="font-bold">安全驾驶进阶课程</h3>
+                <p class="text-sm opacity-80 mt-1">提升驾驶技巧，预防交通事故</p>
+                <div class="course-meta">
+                    <span>进度：45%</span>
+                    <span>时长：3小时</span>
+                </div>
+                <div class="course-progress mt-2">
+                    <div class="progress-fill" style="--progress: 45%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="images/course-3.jpg" alt="课程封面" class="course-image">
+            <div class="course-info">
+                <h3 class="font-bold">高效送单技巧精讲</h3>
+                <p class="text-sm opacity-80 mt-1">提高接单效率，增加收入</p>
+                <div class="course-meta">
+                    <span>进度：0%</span>
+                    <span>时长：1.5小时</span>
+                </div>
+                <div class="course-progress mt-2">
+                    <div class="progress-fill" style="--progress: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-button">
+        <i class="fas fa-graduation-cap fa-lg"></i>
+    </button>
+</body>
+</html>
